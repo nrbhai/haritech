@@ -6,6 +6,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://haritech.org/google39f47f99bb0d5833.html</loc>
+    <priority>0.1</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
     <loc>https://haritech.org/products.html</loc>
     <priority>0.9</priority>
     <changefreq>daily</changefreq>
