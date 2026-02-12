@@ -34,13 +34,12 @@
             </div>
             <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
             <nav class="nav">
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#home" class="nav-link">Home</a>
                 <a href="products.html" class="nav-link active">Products</a>
-                <a href="index-onepage.html#it-services" class="nav-link">Services</a>
+                <a href="services.html" class="nav-link">Services</a>
                 <a href="website-solutions.html" class="nav-link">Website Solutions</a>
-                <a href="cctv-installation.html" class="nav-link">CCTV Installation</a>
+                <a href="cctv-installation.html" class="nav-link">CCTV & Security</a>
                 <a href="blog.html" class="nav-link">Tech Blog</a>
-                <a href="warranty.html" class="nav-link">Warranty</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 <span class="nav-link lang-switch"><a href="/products.html">EN</a> | <a href="/gu/products.html">ગુજરાતી</a></span>
             </nav>
@@ -48,10 +47,15 @@
     </header>
 
     <!-- Page Header -->
-    <section class="page-header">
+    <section class="page-header page-header-media page-header-hero">
         <div class="container">
-            <h1>Our Products</h1>
-            <p>Refurbished MacBooks • New Laptops • Custom PCs • Gaming Rigs • CCTV • Accessories</p>
+            <div class="page-hero-media">
+                <img src="images/hero-products.webp" alt="HariTech product range" width="1920" height="600" loading="eager" fetchpriority="high">
+            </div>
+            <div class="page-hero-text">
+                <h1>Our Products</h1>
+                <p>Refurbished MacBooks • New Laptops • Custom PCs • Gaming Rigs • CCTV • Accessories</p>
+            </div>
         </div>
     </section>
 
@@ -61,7 +65,7 @@
             <div class="categories-intro">
                 <h2>Complete Tech Solutions</h2>
                 <p>We offer a comprehensive range of technology products and services:</p>
-                <p class="related-links">Need IT support or CCTV installation? Visit <a href="index.html#it-services">IT Services</a> or <a href="contact.html">Contact HariTech</a>.</p>
+                <p class="related-links">Need IT support or CCTV installation? Visit <a href="services.html">IT Services</a> or <a href="contact.html">Contact HariTech</a>.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -96,9 +100,15 @@
     <!-- Products Section -->
     <section class="products-section">
         <div class="container">
-            <h2 class="section-title">All Laptops & Computers</h2>
-            <div class="products-grid">
-                <!-- DYNAMIC_PRODUCTS_START -->
+            <h2 class="section-title">Explore by Category</h2>
+
+            <div class="product-category-block">
+                <div class="product-category-header">
+                    <h3>Refurbished</h3>
+                    <p>Certified, well-tested devices with great value.</p>
+                </div>
+                <div class="products-grid">
+                    <!-- DYNAMIC_PRODUCTS_REFURBISHED_START -->
 
                 <!-- MacBook Air M1 2020 -->
                 <div class="product-card">
@@ -115,7 +125,7 @@
                             <li>Best Condition / 90%+ Battery</li>
                         </ul>
                         <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" class="btn btn-primary btn-small">Buy on WhatsApp</a>
+                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
                     </div>
                 </div>
 
@@ -136,45 +146,7 @@
                             <li>Charger</li>
                         </ul>
                         <div class="product-price">₹42500</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" class="btn btn-primary btn-small">Buy on WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- HP Pavilion 15 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/hp1.webp" alt="HP Pavilion 15" loading="lazy">
-                        <div class="warranty-badge">1 Year Warranty</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>HP Pavilion 15</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i5 12th Gen</li>
-                            <li>8GB RAM / 512GB SSD</li>
-                            <li>15.6" FHD Display</li>
-                            <li>Windows 11 / Full Service</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in HP Pavilion 15" target="_blank" class="btn btn-primary btn-small">Buy on WhatsApp</a>
-                    </div>
-                </div>
-
-                <!-- Lenovo IdeaPad Slim 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/lenovo1.webp" alt="Lenovo IdeaPad Slim 3" loading="lazy">
-                        <div class="warranty-badge">1 Year Warranty</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Lenovo IdeaPad Slim 3</h3>
-                        <ul class="product-specs">
-                            <li>AMD Ryzen 5 5500U</li>
-                            <li>8GB RAM / 512GB SSD</li>
-                            <li>15.6" FHD Display</li>
-                            <li>Windows 11 / Full Service</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in Lenovo IdeaPad Slim 3" target="_blank" class="btn btn-primary btn-small">Buy on WhatsApp</a>
+                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
                     </div>
                 </div>
 
@@ -233,6 +205,55 @@
                         </ul>
                         <div class="product-price">₹Call</div>
                         <a href="https://wa.me/919825034580?text=I'm interested in MacBook Pro 15 2017" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+                <!-- DYNAMIC_PRODUCTS_REFURBISHED_END -->
+                </div>
+            </div>
+
+            <div class="product-category-block">
+                <div class="product-category-header">
+                    <h3>New Laptops</h3>
+                    <p>Latest models with full warranty and support.</p>
+                </div>
+                <div class="products-grid">
+                    <!-- DYNAMIC_PRODUCTS_NEW_LAPTOPS_START -->
+
+                <!-- HP Pavilion 15 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/hp1.webp" alt="HP Pavilion 15" loading="lazy">
+                        <div class="warranty-badge">1 Year Warranty</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>HP Pavilion 15</h3>
+                        <ul class="product-specs">
+                            <li>Intel Core i5 12th Gen</li>
+                            <li>8GB RAM / 512GB SSD</li>
+                            <li>15.6" FHD Display</li>
+                            <li>Windows 11 / Full Service</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in HP Pavilion 15" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+
+                <!-- Lenovo IdeaPad Slim 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/products/lenovo1.webp" alt="Lenovo IdeaPad Slim 3" loading="lazy">
+                        <div class="warranty-badge">1 Year Warranty</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Lenovo IdeaPad Slim 3</h3>
+                        <ul class="product-specs">
+                            <li>AMD Ryzen 5 5500U</li>
+                            <li>8GB RAM / 512GB SSD</li>
+                            <li>15.6" FHD Display</li>
+                            <li>Windows 11 / Full Service</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in Lenovo IdeaPad Slim 3" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
                     </div>
                 </div>
 
@@ -435,7 +456,117 @@
                         <a href="https://wa.me/919825034580?text=I'm interested in Acer Swift 3" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
                     </div>
                 </div>
-                <!-- DYNAMIC_PRODUCTS_END -->
+                <!-- DYNAMIC_PRODUCTS_NEW_LAPTOPS_END -->
+                </div>
+            </div>
+
+            <div class="product-category-block">
+                <div class="product-category-header">
+                    <h3>New Desktops</h3>
+                    <p>Compact and full-size desktops ready for work.</p>
+                </div>
+                <div class="products-grid">
+                    <!-- DYNAMIC_PRODUCTS_NEW_DESKTOPS_START -->
+                <!-- DYNAMIC_PRODUCTS_NEW_DESKTOPS_END -->
+                </div>
+            </div>
+
+            <div class="product-category-block">
+                <div class="product-category-header">
+                    <h3>Printers</h3>
+                    <p>Inkjet, laser, and all-in-one printers on request.</p>
+                </div>
+                <div class="products-grid">
+                    <!-- DYNAMIC_PRODUCTS_PRINTERS_START -->
+
+                <!-- HP LaserJet MFP M126nw -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/laserprinter.webp" alt="HP LaserJet MFP M126nw" loading="lazy">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h3>HP LaserJet MFP M126nw</h3>
+                        <ul class="product-specs">
+                            <li>Monochrome laser</li>
+                            <li>Print/Scan/Copy</li>
+                            <li>Wi-Fi enabled</li>
+                            <li>Ideal for small offices</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in HP LaserJet M126nw" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+
+                <!-- Canon PIXMA G3010 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/canonprinter.webp" alt="Canon PIXMA G3010" loading="lazy">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h3>Canon PIXMA G3010</h3>
+                        <ul class="product-specs">
+                            <li>Ink tank printer</li>
+                            <li>Print/Scan/Copy</li>
+                            <li>Low cost per page</li>
+                            <li>Wi-Fi enabled</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in Canon PIXMA G3010" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+                <!-- DYNAMIC_PRODUCTS_PRINTERS_END -->
+                </div>
+            </div>
+
+            <div class="product-category-block">
+                <div class="product-category-header">
+                    <h3>CCTV Cameras</h3>
+                    <p>Complete CCTV setups for home and business.</p>
+                </div>
+                <div class="products-grid">
+                    <!-- DYNAMIC_PRODUCTS_CCTV_START -->
+
+                <!-- Hikvision 4 Camera Kit -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cctv.webp" alt="Hikvision 4 Camera Kit" loading="lazy">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h3>Hikvision 4 Camera Kit</h3>
+                        <ul class="product-specs">
+                            <li>4 HD cameras</li>
+                            <li>DVR with remote view</li>
+                            <li>Night vision</li>
+                            <li>Installation support</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in Hikvision 4 Camera Kit" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+
+                <!-- CP Plus 2 Camera Kit -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cctv2.webp" alt="CP Plus 2 Camera Kit" loading="lazy">
+                        
+                    </div>
+                    <div class="product-info">
+                        <h3>CP Plus 2 Camera Kit</h3>
+                        <ul class="product-specs">
+                            <li>2 HD cameras</li>
+                            <li>DVR/NVR options</li>
+                            <li>Mobile viewing</li>
+                            <li>Warranty included</li>
+                        </ul>
+                        <div class="product-price">₹Call</div>
+                        <a href="https://wa.me/919825034580?text=I'm interested in CP Plus 2 Camera Kit" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
+                    </div>
+                </div>
+                <!-- DYNAMIC_PRODUCTS_CCTV_END -->
+                </div>
             </div>
         </div>
     </section>
@@ -450,36 +581,45 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Hari Tech Solutions</h3>
-                    <p>Your complete tech solutions partner - refurbished MacBooks, new laptops, custom PCs, gaming rigs, CCTV cameras, and accessories.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: <a href="mailto:admin@haritech.org">admin@haritech.org</a></p>
-                    <p>Phone: +91 98250 34580</p>
-                    <p>Address: Pioneer Computer Services, Dhatia Falia 3 Ways, Anam Ring Road, Bhuj, Kutch, Gujarat</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <p><a href="products.html">Products</a></p>
-                    <p><a href="warranty.html">Warranty Policy</a></p>
-                    <p><a href="contact.html">Contact Us</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Hari Tech Solutions. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Button -->
+<!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919825034580" target="_blank" class="whatsapp-float" aria-label="Contact us on WhatsApp">
         <span class="whatsapp-icon">💬</span>
     </a>
     <script src="script.js"></script>
+    <footer class="footer">
+    <div class="container">
+        <div class="footer-card">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo-hari.png" alt="HariTech" loading="lazy">
+                    </div>
+                    <p class="footer-tagline">From Powerful Computers to Secure CCTV, from Refurbished Apple MacBooks to High-Impact Websites — We Make Technology Work for You.</p>
+                </div>
+                <div class="footer-links">
+                    <h3 class="footer-heading">Menu</h3>
+                    <a class="footer-link" href="index.html#home">Home</a>
+                    <a class="footer-link" href="products.html">Products</a>
+                    <a class="footer-link" href="services.html">Services</a>
+                    <a class="footer-link" href="website-solutions.html">Website Solutions</a>
+                    <a class="footer-link" href="cctv-installation.html">CCTV & Security</a>
+                    <a class="footer-link" href="blog.html">Tech Blog</a>
+                    <a class="footer-link" href="contact.html">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h3 class="footer-heading">Contact</h3>
+                    <p><strong>Phone:</strong> <a class="footer-link" href="tel:+919825034580">+91 98250 34580</a></p>
+                    <p><strong>Email:</strong> <a class="footer-link" href="mailto:admin@haritech.org">admin@haritech.org</a></p>
+                    <p><strong>Address:</strong> Pioneer Computer Services, Dhatia Falia 3 Ways, Anam Ring Road, Bhuj, Kutch, Gujarat</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
+
+
+
+
+

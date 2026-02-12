@@ -131,6 +131,9 @@ def generate_web_packages_html(packages):
 """
     return html
 
+def normalize_text(value):
+    return (value or '').strip().lower()
+
 def update_file(filename, replacements):
     print(f"Reading {filename}...")
     try:
@@ -190,6 +193,24 @@ def build_site():
     # Generate HTML content
     products_html_all = generate_products_html(products)
     products_html_home = generate_products_html(products, limit=8)
+
+    refurbished_products = [p for p in products if normalize_text(p.get('Condition')) == 'refurbish']
+    new_products = [p for p in products if normalize_text(p.get('Condition')) == 'new']
+    new_laptops = [p for p in new_products if 'laptop' in normalize_text(p.get('Category'))]
+    new_desktops = [
+        p for p in new_products
+        if normalize_text(p.get('Category')) in ('desktop', 'desktops', 'tiny')
+        or 'desktop' in normalize_text(p.get('Category'))
+    ]
+
+    printers = [p for p in products if 'printer' in normalize_text(p.get('Category'))]
+    cctv_items = [p for p in products if 'cctv' in normalize_text(p.get('Category'))]
+
+    refurbished_html = generate_products_html(refurbished_products)
+    new_laptops_html = generate_products_html(new_laptops)
+    new_desktops_html = generate_products_html(new_desktops)
+    printers_html = generate_products_html(printers)
+    cctv_html = generate_products_html(cctv_items)
     it_services_html = generate_it_services_html(it_services)
     web_services_html = generate_web_services_html(web_services)
     web_packages_html = generate_web_packages_html(web_packages)
@@ -207,9 +228,22 @@ def build_site():
     })
 
     # 2. Update products.html
-    # products.html uses: PRODUCTS
+    # products.html uses: PRODUCTS_REFURBISHED, PRODUCTS_NEW_LAPTOPS, PRODUCTS_NEW_DESKTOPS
     update_file('products.html', {
-        'PRODUCTS': products_html_all
+        'PRODUCTS_REFURBISHED': refurbished_html,
+        'PRODUCTS_NEW_LAPTOPS': new_laptops_html,
+        'PRODUCTS_NEW_DESKTOPS': new_desktops_html,
+        'PRODUCTS_PRINTERS': printers_html,
+        'PRODUCTS_CCTV': cctv_html
+    })
+
+    # 2b. Update Gujarati products page
+    update_file('gu/products.html', {
+        'PRODUCTS_REFURBISHED': refurbished_html,
+        'PRODUCTS_NEW_LAPTOPS': new_laptops_html,
+        'PRODUCTS_NEW_DESKTOPS': new_desktops_html,
+        'PRODUCTS_PRINTERS': printers_html,
+        'PRODUCTS_CCTV': cctv_html
     })
 
     # 3. Update website-solutions.html
