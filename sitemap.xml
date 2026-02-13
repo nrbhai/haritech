@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- English Pages -->
   <url>
     <loc>https://haritech.org/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://haritech.org/google39f47f99bb0d5833.html</loc>
-    <priority>0.1</priority>
-    <changefreq>yearly</changefreq>
   </url>
   <url>
     <loc>https://haritech.org/products.html</loc>
@@ -16,8 +12,23 @@
     <changefreq>daily</changefreq>
   </url>
   <url>
+    <loc>https://haritech.org/services.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://haritech.org/website-solutions.html</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/blog.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/cctv-installation.html</loc>
+    <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
@@ -32,6 +43,58 @@
   </url>
   <url>
     <loc>https://haritech.org/index-onepage.html</loc>
+    <priority>0.5</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/google39f47f99bb0d5833.html</loc>
+    <priority>0.1</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- Gujarati Pages (gu/) -->
+  <url>
+    <loc>https://haritech.org/gu/</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/products.html</loc>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/services.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/website-solutions.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/blog.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/cctv-installation.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/contact.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/warranty.html</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/gu/index-onepage.html</loc>
     <priority>0.5</priority>
     <changefreq>weekly</changefreq>
   </url>
