@@ -21,6 +21,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Floating language switcher
+    const navLangSwitch = document.querySelector('.lang-switch');
+    if (navLangSwitch) {
+        const normalizePath = (path) => {
+            if (!path) return '/';
+            let normalized = path.replace(/index\.html$/i, '');
+            if (normalized.length > 1 && normalized.endsWith('/')) {
+                normalized = normalized.slice(0, -1);
+            }
+            return normalized || '/';
+        };
+
+        const langWidget = document.createElement('div');
+        langWidget.className = 'lang-switcher-float';
+
+        const widgetOptions = document.createElement('div');
+        widgetOptions.className = 'lang-switcher-options';
+
+        const currentPath = normalizePath(window.location.pathname);
+
+        navLangSwitch.querySelectorAll('a').forEach(anchor => {
+            const clone = anchor.cloneNode(true);
+            clone.classList.add('lang-switcher-option');
+
+            try {
+                const targetUrl = new URL(clone.getAttribute('href'), window.location.href);
+                const targetPath = normalizePath(targetUrl.pathname);
+                if (targetPath === currentPath) {
+                    clone.classList.add('active');
+                }
+            } catch (err) {
+                // ignore invalid URLs
+            }
+
+            widgetOptions.appendChild(clone);
+        });
+
+        langWidget.appendChild(widgetOptions);
+        document.body.appendChild(langWidget);
+    }
+
     // Active navbar state on scroll (Only for index.html or pages with sections)
     const sections = document.querySelectorAll('section');
     if (sections.length > 0) {
