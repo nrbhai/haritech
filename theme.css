@@ -17,6 +17,9 @@
     --accent-3: #facc15;
     --border: rgba(148, 163, 184, 0.22);
     --glow: 0 14px 45px rgba(250, 204, 21, 0.45);
+    --gold-deep: #6b4000;
+    --gold-mid: #f7c76c;
+    --gold-bright: #fff4d2;
 }
 
 * {
@@ -50,6 +53,38 @@ body::before {
         radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
+}
+
+/* Shimmer animation for headings */
+@keyframes goldenShine {
+    0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.25));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 18px rgba(255, 240, 200, 0.55));
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.25));
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.section-title,
+.footer-heading {
+    background-image: linear-gradient(120deg, var(--gold-deep), var(--gold-mid), var(--gold-bright), var(--gold-mid), var(--gold-deep));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldenShine 5s linear infinite;
+    position: relative;
 }
 
 img {
@@ -94,9 +129,49 @@ ul {
     flex-wrap: wrap;
 }
 
+.logo {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
 .logo img {
     max-height: 50px;
-    filter: brightness(0) invert(1);
+    opacity: 0;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(115deg, #5e3b00, #f7c76c, #fff4d2, #f7c76c, #5e3b00);
+    background-size: 250% auto;
+    animation: goldenLogoFill 5s linear infinite;
+    -webkit-mask-image: url('images/logo-hari.png');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    mask-image: url('images/logo-hari.png');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    filter: drop-shadow(0 0 12px rgba(247, 199, 108, 0.5));
+    pointer-events: none;
+}
+
+@keyframes goldenLogoFill {
+    0% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 8px rgba(247, 199, 108, 0.4));
+    }
+    50% {
+        background-position: 100% 50%;
+        filter: drop-shadow(0 0 20px rgba(255, 244, 210, 0.8));
+    }
+    100% {
+        background-position: 0% 50%;
+        filter: drop-shadow(0 0 8px rgba(247, 199, 108, 0.4));
+    }
 }
 
 .nav-toggle {
@@ -116,12 +191,13 @@ ul {
 }
 
 .nav-link {
-    color: var(--muted);
+    color: var(--gold-mid);
     font-weight: 500;
     font-size: 0.95rem;
     transition: all 0.3s ease;
     padding: 0.5rem 0;
     position: relative;
+    text-shadow: 0 0 8px rgba(247, 199, 108, 0.45);
 }
 
 .nav-link::after {
@@ -137,7 +213,7 @@ ul {
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--text);
+    color: var(--gold-bright);
 }
 
 .nav-link:hover::after,
