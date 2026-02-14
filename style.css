@@ -2246,8 +2246,9 @@ section {
     .lang-switcher-float {
         left: 50%;
         right: auto;
+        top: 90px;
+        bottom: auto;
         transform: translateX(-50%);
-        bottom: 105px;
     }
 
     .hero {
