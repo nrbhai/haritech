@@ -52,6 +52,28 @@
     <changefreq>yearly</changefreq>
   </url>
 
+  <!-- SEO Landing Pages -->
+  <url>
+    <loc>https://haritech.org/computer-repair-bhuj.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/cctv-installation-bhuj.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/network-services-bhuj.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://haritech.org/refurbished-laptops-bhuj.html</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
   <!-- Gujarati Pages (gu/) -->
   <url>
     <loc>https://haritech.org/gu/</loc>
