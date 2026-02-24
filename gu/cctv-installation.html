@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html lang="gu">
 <head>
+        <!-- Security headers for best practices -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline';">
+        <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ભુજમાં CCTV અને સુરક્ષા સોલ્યુશન્સ: Hikvision, CPPlus, Securus અને વધુ, સાથે અટેન્ડન્સ સિસ્ટમ, વિડિઓ ડોર ફોન, સુરક્ષા લોક્સ અને કરન્સી કાઉન્ટર્સ.">
     <meta name="google-site-verification" content="google39f47f99bb0d5833.html">
     <title>CCTV & Security in Bhuj | HariTech</title>
-    <link rel="stylesheet" href="../theme.css">
+        <!-- Preload critical CSS -->
+        <link rel="preload" href="../theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="../theme.css"></noscript>
+        <style>
+        /* Critical CSS: header, nav, hero image, main layout */
+        body { font-family: 'Inter', 'Noto Sans Gujarati', sans-serif; background: #0b1120; color: #f8fafc; margin:0; }
+        .header { background: #0b1120; padding: 1.25rem 0; position: sticky; top: 0; z-index: 1000; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .logo img { max-height: 50px; }
+        .nav { display: flex; gap: 2rem; align-items: center; }
+        .nav-link { color: #f7c76c; font-weight: 500; font-size: 0.95rem; padding: 0.5rem 0; }
+        .nav-link.active { color: #fff4d2; }
+        .page-header { padding: 2rem 0 0 0; }
+        .page-hero-media img { width: 100%; max-width: 100vw; height: auto; display: block; }
+        .page-hero-text { text-align: center; margin-top: 1.5rem; }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        @media (max-width: 600px) {
+            .container { padding: 0 8px; }
+            h1 { font-size: 1.3rem; }
+        }
+        </style>
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="canonical" href="https://haritech.org/gu/cctv-installation.html">
     <link rel="alternate" hreflang="en-IN" href="https://haritech.org/cctv-installation.html">
@@ -16,8 +39,8 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="index.html">
-                    <img src="../images/logo-hari.png" alt="HariTech" loading="lazy" style="max-height: 50px; width: auto;">
+                <a href="index.html" aria-label="Go to Home page">
+                    <img src="../images/logo-hari.png" alt="HariTech" loading="lazy" width="150" height="50" style="max-height: 50px; width: auto;">
                 </a>
             </div>
             <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
@@ -29,11 +52,12 @@
                 <a href="cctv-installation.html" class="nav-link active">CCTV & Security</a>
                 <a href="blog.html" class="nav-link">Tech Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
-                <span class="nav-link lang-switch"><a href="/cctv-installation.html">EN</a> | <a href="/gu/cctv-installation.html">ગુજરાતી</a></span>
+                <span class="nav-link lang-switch"><a href="/cctv-installation.html" aria-label="Switch to English">EN</a> | <a href="/gu/cctv-installation.html" aria-label="Switch to Gujarati">ગુજરાતી</a></span>
             </nav>
         </div>
     </header>
 
+    <main id="main-content">
     <section class="page-header page-header-media page-header-hero">
         <div class="container">
             <div class="page-hero-media">
@@ -63,7 +87,7 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/cctvhik.webp" alt="CCTV camera installation" loading="lazy">
+                            <img src="../images/cctvhik.webp" alt="CCTV camera installation" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">📷</div>
                         <h3>CCTV Camera Installation</h3>
@@ -71,7 +95,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/products/video%20doorphone.webp" alt="Video door phone system" loading="lazy">
+                            <img src="../images/products/video%20doorphone.webp" alt="Video door phone system" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">🚪</div>
                         <h3>Video Door Phones</h3>
@@ -79,7 +103,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/products/digitaldoor.webp" alt="Smart door lock" loading="lazy">
+                            <img src="../images/products/digitaldoor.webp" alt="Smart door lock" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">🔐</div>
                         <h3>Digital &amp; Smart Door Locks</h3>
@@ -87,7 +111,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/products/biometric.webp" alt="Biometric access control" loading="lazy">
+                            <img src="../images/products/biometric.webp" alt="Biometric access control" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">🧬</div>
                         <h3>Biometric Security Systems</h3>
@@ -95,7 +119,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/products/attendance.webp" alt="Attendance machine system" loading="lazy">
+                            <img src="../images/products/attendance.webp" alt="Attendance machine system" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">🕒</div>
                         <h3>Attendance Machines</h3>
@@ -103,7 +127,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-media">
-                            <img src="../images/products/currency.webp" alt="Currency counting machine" loading="lazy">
+                            <img src="../images/products/currency.webp" alt="Currency counting machine" loading="lazy" width="320" height="160">
                         </div>
                         <div class="feature-icon">💵</div>
                         <h3>Currency Counting Machines</h3>
@@ -187,13 +211,14 @@
         </div>
     </section>
 <script src="../script.js"></script>
+    <script src="../script.js" defer></script>
     <footer class="footer">
     <div class="container">
         <div class="footer-card">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="../images/logo-hari.png" alt="HariTech" loading="lazy">
+                        <img src="../images/logo-hari.png" alt="HariTech" loading="lazy" width="150" height="50">
                     </div>
                     <p class="footer-tagline">From Powerful Computers to Secure CCTV, from Refurbished Apple MacBooks to High-Impact Websites — We Make Technology Work for You.</p>
                 </div>
@@ -217,6 +242,7 @@
         </div>
     </div>
 </footer>
+</main>
 </body>
 </html>
 
