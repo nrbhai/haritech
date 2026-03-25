@@ -654,6 +654,61 @@ section:target .section-card {
     border-radius: 999px;
 }
 
+/* Individual brand colors */
+.brand-apple {
+    background: linear-gradient(135deg, #000000, #333333);
+    color: #ffffff;
+    border: 1px solid #666666;
+}
+
+.brand-hp {
+    background: linear-gradient(135deg, #0096D6, #00B2E3);
+    color: #ffffff;
+    border: 1px solid #0078A8;
+}
+
+.brand-dell {
+    background: linear-gradient(135deg, #007DB8, #0099CC);
+    color: #ffffff;
+    border: 1px solid #005A8C;
+}
+
+.brand-lenovo {
+    background: linear-gradient(135deg, #E2231A, #FF4D4D);
+    color: #ffffff;
+    border: 1px solid #B91C15;
+}
+
+.brand-canon {
+    background: linear-gradient(135deg, #8B5CF6, #A78BFA);
+    color: #ffffff;
+    border: 1px solid #7C3AED;
+}
+
+.brand-epson {
+    background: linear-gradient(135deg, #10B981, #34D399);
+    color: #ffffff;
+    border: 1px solid #059669;
+}
+
+.brand-brother {
+    background: linear-gradient(135deg, #F59E0B, #FBBF24);
+    color: #000000;
+    border: 1px solid #D97706;
+}
+
+.brand-hikvision {
+    background: linear-gradient(135deg, #DC2626, #EF4444);
+    color: #ffffff;
+    border: 1px solid #B91C1C;
+}
+
+.brand-cpplus {
+    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    color: #ffffff;
+    border: 1px solid #6D28D9;
+}
+
 /* Offerings */
 .offerings-grid {
     display: grid;
