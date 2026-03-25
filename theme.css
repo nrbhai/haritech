@@ -137,26 +137,8 @@ ul {
 
 .logo img {
     max-height: 50px;
-    opacity: 0;
-}
-
-.logo::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(115deg, #5e3b00, #f7c76c, #fff4d2, #f7c76c, #5e3b00);
-    background-size: 250% auto;
-    animation: goldenLogoFill 5s linear infinite;
-    -webkit-mask-image: url('images/logo-hari.png');
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
-    mask-image: url('images/logo-hari.png');
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    filter: drop-shadow(0 0 12px rgba(247, 199, 108, 0.5));
-    pointer-events: none;
+    width: auto;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.4));
 }
 
 @keyframes goldenLogoFill {
@@ -656,57 +638,57 @@ section:target .section-card {
 
 /* Individual brand colors */
 .brand-apple {
-    background: linear-gradient(135deg, #000000, #333333);
-    color: #ffffff;
-    border: 1px solid #666666;
+    background: linear-gradient(135deg, #C0C0C0, #FFFFFF) !important;
+    color: #000000 !important;
+    border: 1px solid #999999 !important;
 }
 
 .brand-hp {
-    background: linear-gradient(135deg, #0096D6, #00B2E3);
-    color: #ffffff;
-    border: 1px solid #0078A8;
+    background: linear-gradient(135deg, #0096D6, #00B2E3) !important;
+    color: #ffffff !important;
+    border: 1px solid #0078A8 !important;
 }
 
 .brand-dell {
-    background: linear-gradient(135deg, #007DB8, #0099CC);
-    color: #ffffff;
-    border: 1px solid #005A8C;
+    background: linear-gradient(135deg, #007DB8, #0099CC) !important;
+    color: #ffffff !important;
+    border: 1px solid #005A8C !important;
 }
 
 .brand-lenovo {
-    background: linear-gradient(135deg, #E2231A, #FF4D4D);
-    color: #ffffff;
-    border: 1px solid #B91C15;
+    background: linear-gradient(135deg, #E2231A, #FF4D4D) !important;
+    color: #ffffff !important;
+    border: 1px solid #B91C15 !important;
 }
 
 .brand-canon {
-    background: linear-gradient(135deg, #8B5CF6, #A78BFA);
-    color: #ffffff;
-    border: 1px solid #7C3AED;
+    background: linear-gradient(135deg, #ED1C24, #FF6B6B) !important;
+    color: #ffffff !important;
+    border: 1px solid #C8102E !important;
 }
 
 .brand-epson {
-    background: linear-gradient(135deg, #10B981, #34D399);
-    color: #ffffff;
-    border: 1px solid #059669;
+    background: linear-gradient(135deg, #003399, #0055CC) !important;
+    color: #ffffff !important;
+    border: 1px solid #002266 !important;
 }
 
 .brand-brother {
-    background: linear-gradient(135deg, #F59E0B, #FBBF24);
-    color: #000000;
-    border: 1px solid #D97706;
+    background: linear-gradient(135deg, #0066CC, #0099FF) !important;
+    color: #ffffff !important;
+    border: 1px solid #004499 !important;
 }
 
 .brand-hikvision {
-    background: linear-gradient(135deg, #DC2626, #EF4444);
-    color: #ffffff;
-    border: 1px solid #B91C1C;
+    background: linear-gradient(135deg, #DC2626, #EF4444) !important;
+    color: #ffffff !important;
+    border: 1px solid #B91C1C !important;
 }
 
 .brand-cpplus {
-    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
-    color: #ffffff;
-    border: 1px solid #6D28D9;
+    background: linear-gradient(135deg, #1E40AF, #3B82F6) !important;
+    color: #ffffff !important;
+    border: 1px solid #1D4ED8 !important;
 }
 
 /* Offerings */
