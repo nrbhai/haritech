@@ -22,6 +22,8 @@ body {
   color: #fff;
   overflow-x: hidden;
   max-width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img {
@@ -222,18 +224,25 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg) translate
   to   { transform: rotate(360deg) translateX(200px); }
 }
 
-/* Ring 2 — starts at 120° */
+/* Ring 2 — starts at 90° */
 .ring-2 { animation: ring2-spin 18s linear infinite; }
 @keyframes ring2-spin {
-  from { transform: rotate(120deg) translateX(200px); }
-  to   { transform: rotate(480deg) translateX(200px); }
+  from { transform: rotate(90deg)  translateX(200px); }
+  to   { transform: rotate(450deg) translateX(200px); }
 }
 
-/* Ring 3 — starts at 240° */
+/* Ring 3 — starts at 180° */
 .ring-3 { animation: ring3-spin 18s linear infinite; }
 @keyframes ring3-spin {
-  from { transform: rotate(240deg) translateX(200px); }
-  to   { transform: rotate(600deg) translateX(200px); }
+  from { transform: rotate(180deg) translateX(200px); }
+  to   { transform: rotate(540deg) translateX(200px); }
+}
+
+/* Ring 4 — starts at 270° */
+.ring-4 { animation: ring4-spin 18s linear infinite; }
+@keyframes ring4-spin {
+  from { transform: rotate(270deg) translateX(200px); }
+  to   { transform: rotate(630deg) translateX(200px); }
 }
 
 /* Card base — sits at the translated end of its ring */
@@ -298,14 +307,20 @@ nav.nav-open .nav-toggle span:nth-child(3) { transform: rotate(-45deg) translate
 
 .card-2 { animation: card2-counter 18s linear infinite; }
 @keyframes card2-counter {
-  from { transform: rotate(-120deg) rotate(5deg); }
-  to   { transform: rotate(-480deg) rotate(5deg); }
+  from { transform: rotate(-90deg)  rotate(5deg); }
+  to   { transform: rotate(-450deg) rotate(5deg); }
 }
 
 .card-3 { animation: card3-counter 18s linear infinite; }
 @keyframes card3-counter {
-  from { transform: rotate(-240deg) rotate(-3deg); }
-  to   { transform: rotate(-600deg) rotate(-3deg); }
+  from { transform: rotate(-180deg) rotate(-3deg); }
+  to   { transform: rotate(-540deg) rotate(-3deg); }
+}
+
+.card-4 { animation: card4-counter 18s linear infinite; }
+@keyframes card4-counter {
+  from { transform: rotate(-270deg) rotate(4deg); }
+  to   { transform: rotate(-630deg) rotate(4deg); }
 }
 
 /* Hover — pause orbit ring + snap card upright */
@@ -831,7 +846,7 @@ footer {
 
 .page-hero h1 {
   font-size: clamp(52px,9vw,110px);
-  font-weight:900; line-height:.88; letter-spacing:-3px;
+  font-weight:900; line-height:1.1; letter-spacing:-3px;
   margin-bottom:28px;
 }
 
@@ -1297,19 +1312,46 @@ footer {
   .ring-1 { animation: ring1-spin-sm 18s linear infinite; }
   .ring-2 { animation: ring2-spin-sm 18s linear infinite; }
   .ring-3 { animation: ring3-spin-sm 18s linear infinite; }
+  .ring-4 { animation: ring4-spin-sm 18s linear infinite; }
   @keyframes ring1-spin-sm {
     from { transform: rotate(0deg)   translateX(140px); }
     to   { transform: rotate(360deg) translateX(140px); }
   }
   @keyframes ring2-spin-sm {
-    from { transform: rotate(120deg) translateX(140px); }
-    to   { transform: rotate(480deg) translateX(140px); }
+    from { transform: rotate(90deg)  translateX(140px); }
+    to   { transform: rotate(450deg) translateX(140px); }
   }
   @keyframes ring3-spin-sm {
-    from { transform: rotate(240deg) translateX(140px); }
-    to   { transform: rotate(600deg) translateX(140px); }
+    from { transform: rotate(180deg) translateX(140px); }
+    to   { transform: rotate(540deg) translateX(140px); }
   }
-  .card   { width: 170px; top: -85px; left: -85px; padding: 14px; }
+  @keyframes ring4-spin-sm {
+    from { transform: rotate(270deg) translateX(140px); }
+    to   { transform: rotate(630deg) translateX(140px); }
+  }
+  .card   { width: 170px; top: -85px; left: -85px; padding: 14px; transform: rotate(0deg); }
+  /* Remove visual tilts on mobile to ensure 'proper position' */
+  .card-1 { animation-name: card1-counter-clean-sm; }
+  .card-2 { animation-name: card2-counter-clean-sm; }
+  .card-3 { animation-name: card3-counter-clean-sm; }
+  .card-4 { animation-name: card4-counter-clean-sm; }
+
+  @keyframes card1-counter-clean-sm {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @keyframes card2-counter-clean-sm {
+    from { transform: rotate(-90deg); }
+    to   { transform: rotate(-450deg); }
+  }
+  @keyframes card3-counter-clean-sm {
+    from { transform: rotate(-180deg); }
+    to   { transform: rotate(-540deg); }
+  }
+  @keyframes card4-counter-clean-sm {
+    from { transform: rotate(-270deg); }
+    to   { transform: rotate(-630deg); }
+  }
   .card img { height: 110px; }
 
   .hero-bottom {
@@ -1372,19 +1414,45 @@ footer {
   .ring-1 { animation: ring1-spin-xs 18s linear infinite; }
   .ring-2 { animation: ring2-spin-xs 18s linear infinite; }
   .ring-3 { animation: ring3-spin-xs 18s linear infinite; }
+  .ring-4 { animation: ring4-spin-xs 18s linear infinite; }
   @keyframes ring1-spin-xs {
     from { transform: rotate(0deg)   translateX(100px); }
     to   { transform: rotate(360deg) translateX(100px); }
   }
   @keyframes ring2-spin-xs {
-    from { transform: rotate(120deg) translateX(100px); }
-    to   { transform: rotate(480deg) translateX(100px); }
+    from { transform: rotate(90deg)  translateX(100px); }
+    to   { transform: rotate(450deg) translateX(100px); }
   }
   @keyframes ring3-spin-xs {
-    from { transform: rotate(240deg) translateX(100px); }
-    to   { transform: rotate(600deg) translateX(100px); }
+    from { transform: rotate(180deg) translateX(100px); }
+    to   { transform: rotate(540deg) translateX(100px); }
   }
-  .card   { width: 140px; top: -70px; left: -70px; padding: 12px; gap: 6px; }
+  @keyframes ring4-spin-xs {
+    from { transform: rotate(270deg) translateX(100px); }
+    to   { transform: rotate(630deg) translateX(100px); }
+  }
+  .card   { width: 140px; top: -70px; left: -70px; padding: 12px; gap: 6px; transform: rotate(0deg); }
+  .card-1 { animation-name: card1-counter-clean-xs; }
+  .card-2 { animation-name: card2-counter-clean-xs; }
+  .card-3 { animation-name: card3-counter-clean-xs; }
+  .card-4 { animation-name: card4-counter-clean-xs; }
+
+  @keyframes card1-counter-clean-xs {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @keyframes card2-counter-clean-xs {
+    from { transform: rotate(-90deg); }
+    to   { transform: rotate(-450deg); }
+  }
+  @keyframes card3-counter-clean-xs {
+    from { transform: rotate(-180deg); }
+    to   { transform: rotate(-540deg); }
+  }
+  @keyframes card4-counter-clean-xs {
+    from { transform: rotate(-270deg); }
+    to   { transform: rotate(-630deg); }
+  }
   .card img { height: 88px; }
   .card-name { font-size: 13px; }
 
@@ -1489,4 +1557,10 @@ footer {
   .footer-inner           { padding: 24px 16px 16px; }
   .footer-tagline         { font-size: 12px; }
   .footer-wa              { font-size: 12px; padding: 8px 16px; }
+
+  /* Ensure orbit fits on tiny screens */
+  @media (max-width: 360px) {
+    .floating-cards { transform: scale(0.85); top: 62%; }
+    .hero h1 { font-size: 32px; }
+  }
 }
