@@ -159,6 +159,7 @@
 </footer>
 
 <script>
+// Nav toggle
 document.querySelectorAll('.nav-toggle').forEach(function(btn){
   btn.addEventListener('click',function(){
     var nav=this.closest('nav');
@@ -166,6 +167,34 @@ document.querySelectorAll('.nav-toggle').forEach(function(btn){
     this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
   });
 });
+
+// Form Submission handling
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('contact-name').value;
+    const phone = document.getElementById('contact-phone').value;
+    const type = document.getElementById('contact-type').value;
+    const msg = document.getElementById('contact-message').value;
+    
+    // Construct WhatsApp message
+    const waBase = "https://wa.me/919825034580";
+    const waMsg = `*New Inquiry from HariTech Website*%0A%0A` +
+                 `*Name:* ${encodeURIComponent(name)}%0A` +
+                 `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                 `*Inquiry:* ${encodeURIComponent(type)}%0A` +
+                 `*Message:* ${encodeURIComponent(msg)}`;
+    
+    // Redirect to WhatsApp
+    window.open(`${waBase}?text=${waMsg}`, '_blank');
+    
+    // Optional: show a small confirmation to the user
+    alert("Thank you! You are being redirected to WhatsApp to send your message.");
+  });
+}
 </script>
 </body>
 </html>
