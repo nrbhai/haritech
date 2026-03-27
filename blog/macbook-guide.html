@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>MacBook M1 vs M2: Choice Guide | Tech Blog | Hari Tech Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-inner">
+  <div class="logo">
+    <a href="../index.html" class="logo-link">
+      <span class="logo-main">HARI TECH SOLUTIONS</span>
+      <span class="logo-sub logo-sub-block">Bhuj's Technology Partner</span>
+    </a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../products.html">Products</a>
+    <a href="../services.html">Services</a>
+    <a href="../website-solutions.html">Website Solutions</a>
+    <a href="../cctv-security.html">CCTV & Security</a>
+    <a href="../tech-blog.html" class="active">Tech Blog</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- BLOG POST HERO -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">Reviews · Apple Guide</p>
+    <h1>MacBook M1 vs M2:<br>Which to Buy?</h1>
+    <p class="page-hero-sub">Simplified advice for students and professionals in Bhuj looking for their next Apple laptop.</p>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<section class="section">
+  <div class="featured-blog-box" style="margin-bottom:0;">
+    <div class="featured-blog-img">
+      <img src="../images/blog/macbook-blog.png" alt="MacBook Pile">
+    </div>
+    <div class="featured-blog-content">
+      <h2>The Best Choice</h2>
+      <p>Apple made choosing hard because both are great. Here is the 'Easy Language' breakdown:</p>
+      
+      <div class="blog-points">
+        <div class="blog-point">
+          <span class="blog-point-icon">💰</span>
+          <div>
+            <strong>M1: The Value King</strong>
+            Still extremely fast, battery lasts all day, and it's much cheaper! Best for students and basic office work.
+          </div>
+        </div>
+        <div class="blog-point">
+          <span class="blog-point-icon">💎</span>
+          <div>
+            <strong>M2: The New Look</strong>
+            New design, better screen, and a slightly faster chip. Choose this if you want the latest model and plan to do video editing.
+          </div>
+        </div>
+        <div class="blog-point">
+          <span class="blog-point-icon">✅</span>
+          <div>
+            <strong>Our Advice</strong>
+            For 90% of people, a **refurbished M1 MacBook** from our store is the absolute best deal in Bhuj. You save money and get incredible performance.
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top:40px;">
+        <a href="../products.html" class="btn-dark">See Our MacBooks ↗</a>
+        <a href="../tech-blog.html" class="blog-more" style="display:block; margin-top:20px;">← Back to Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="margin-top:60px;">
+  <p class="footer-wm" aria-hidden="true">HARITECH</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-main">HARI TECH SOLUTIONS</span>
+        <span class="footer-logo-sub">Bhuj's Technology Partner · Since 1993</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../products.html">Products</a>
+        <a href="../services.html">Services</a>
+        <a href="../website-solutions.html">Website Solutions</a>
+        <a href="../cctv-security.html">CCTV & Security</a>
+        <a href="../tech-blog.html">Tech Blog</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Hari Tech Solutions · Bhuj, Kutch, Gujarat</span>
+      <a href="https://wa.me/919825034580" target="_blank" rel="noopener" class="footer-wa">WhatsApp Us ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var nav=this.closest('nav');
+    nav.classList.toggle('nav-open');
+    this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+  });
+});
+</script>
+</body>
+</html>

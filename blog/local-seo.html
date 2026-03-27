@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The Power of Local SEO | Tech Blog | Hari Tech Solutions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-inner">
+  <div class="logo">
+    <a href="../index.html" class="logo-link">
+      <span class="logo-main">HARI TECH SOLUTIONS</span>
+      <span class="logo-sub logo-sub-block">Bhuj's Technology Partner</span>
+    </a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../products.html">Products</a>
+    <a href="../services.html">Services</a>
+    <a href="../website-solutions.html">Website Solutions</a>
+    <a href="../cctv-security.html">CCTV & Security</a>
+    <a href="../tech-blog.html" class="active">Tech Blog</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- BLOG POST HERO -->
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-hero-eyebrow">Websites · Local Growth</p>
+    <h1>The Power of<br>Local SEO</h1>
+    <p class="page-hero-sub">How to make sure people in Bhuj find your business first when they search online.</p>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<section class="section">
+  <div class="featured-blog-box" style="margin-bottom:0;">
+    <div class="featured-blog-img">
+      <img src="../images/blog/web-blog.png" alt="Website Design">
+    </div>
+    <div class="featured-blog-content">
+      <h2>Be Found Locally</h2>
+      <p>Most customers today search on Google Maps. If your business isn't there, you're invisible. Here is how Local SEO helps:</p>
+      
+      <div class="blog-points">
+        <div class="blog-point">
+          <span class="blog-point-icon">🗺️</span>
+          <div>
+            <strong>1. Google Maps Presence</strong>
+            We help your business appear on the map with correct timing, address, and photos.
+          </div>
+        </div>
+        <div class="blog-point">
+          <span class="blog-point-icon">💬</span>
+          <div>
+            <strong>2. WhatsApp Integration</strong>
+            Making it easy for customers to chat with you directly from your website increases sales by 40%.
+          </div>
+        </div>
+        <div class="blog-point">
+          <span class="blog-point-icon">📈</span>
+          <div>
+            <strong>3. Keywords Matter</strong>
+            Using words like 'Best in Bhuj' or 'Near Me' helps Google show your site to local residents.
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-top:40px;">
+        <a href="../website-solutions.html" class="btn-dark">Get a Modern Website ↗</a>
+        <a href="../tech-blog.html" class="blog-more" style="display:block; margin-top:20px;">← Back to Blog</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="margin-top:60px;">
+  <p class="footer-wm" aria-hidden="true">HARITECH</p>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo-main">HARI TECH SOLUTIONS</span>
+        <span class="footer-logo-sub">Bhuj's Technology Partner · Since 1993</span>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../products.html">Products</a>
+        <a href="../services.html">Services</a>
+        <a href="../website-solutions.html">Website Solutions</a>
+        <a href="../cctv-security.html">CCTV & Security</a>
+        <a href="../tech-blog.html">Tech Blog</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Hari Tech Solutions · Bhuj, Kutch, Gujarat</span>
+      <a href="https://wa.me/919825034580" target="_blank" rel="noopener" class="footer-wa">WhatsApp Us ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.nav-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var nav=this.closest('nav');
+    nav.classList.toggle('nav-open');
+    this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+  });
+});
+</script>
+</body>
+</html>
