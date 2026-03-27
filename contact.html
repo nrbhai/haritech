@@ -110,7 +110,7 @@
           <label for="contact-message">Message</label>
           <textarea rows="4" id="contact-message" placeholder="How can we help you?" class="no-resize"></textarea>
         </div>
-        <button type="submit" class="hero-cta form-btn">Send Message ↗</button>
+        <button type="submit" class="hero-cta form-btn">Send Whatsapp Message ↗</button>
       </form>
     </div>
   </div>
@@ -180,19 +180,16 @@ if (contactForm) {
     const type = document.getElementById('contact-type').value;
     const msg = document.getElementById('contact-message').value;
     
-    // Construct WhatsApp message
+    // Construct WhatsApp message in plain text
     const waBase = "https://wa.me/919825034580";
-    const waMsg = `*New Inquiry from HariTech Website*%0A%0A` +
-                 `*Name:* ${encodeURIComponent(name)}%0A` +
-                 `*Phone:* ${encodeURIComponent(phone)}%0A` +
-                 `*Inquiry:* ${encodeURIComponent(type)}%0A` +
-                 `*Message:* ${encodeURIComponent(msg)}`;
+    const waMsg = `Hello HariTech!%0A%0A` +
+                 `Name: ${encodeURIComponent(name)}%0A` +
+                 `Phone: ${encodeURIComponent(phone)}%0A` +
+                 `Inquiry: ${encodeURIComponent(type)}%0A%0A` +
+                 `Message: ${encodeURIComponent(msg)}`;
     
-    // Redirect to WhatsApp
-    window.open(`${waBase}?text=${waMsg}`, '_blank');
-    
-    // Optional: show a small confirmation to the user
-    alert("Thank you! You are being redirected to WhatsApp to send your message.");
+    // Redirect to WhatsApp (use location.href for direct app transition)
+    window.location.href = `${waBase}?text=${waMsg}`;
   });
 }
 </script>
