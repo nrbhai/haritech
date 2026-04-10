@@ -14,6 +14,7 @@
     <meta name="ICBM" content="23.2489, 69.6669">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="dns-prefetch" href="//wa.me">
     <link rel="dns-prefetch" href="//www.google.com">
     <link rel="stylesheet" href="theme.css">
@@ -22,28 +23,178 @@
     <link rel="alternate" hreflang="gu-IN" href="https://haritech.org/gu/index.html">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .nav-link {
-            cursor: pointer;
+        :root {
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --accent: #fbbf24;
+            --accent-dark: #d97706;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
         }
 
-        /* Active Navigation State */
-        .nav-link.active {
-            color: #ffffff;
-            position: relative;
-        }
-        
-        .nav-link.active::after {
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); }
+        h1, h2, h3, h4, .hero-title, .section-title { font-family: var(--font-heading); font-weight: 700; }
+
+        /* Navigation Glassmorphism */
+        .header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: fixed;
             width: 100%;
+            z-index: 1000;
         }
 
-        /* Logo styles */
-        .logo img {
-            max-height: 50px;
-            width: auto;
+        /* Hero Redesign */
+        .hero {
+            height: 100dvh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-dark);
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 40%);
+            animation: orb-float 20s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes orb-float {
+            from { transform: translate(-10%, -10%) rotate(0deg); }
+            to { transform: translate(0%, 0%) rotate(5deg); }
+        }
+
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .orb-1 { width: 400px; height: 400px; background: var(--accent); top: -100px; left: -100px; animation: float 15s infinite; }
+        .orb-2 { width: 300px; height: 300px; background: #3b82f6; bottom: -50px; right: -50px; animation: float 18s infinite reverse; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        .hero .container { position: relative; z-index: 10; }
+        .hero-content { max-width: 800px; }
+        .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero-subtitle { font-size: 1.25rem; color: #94a3b8; margin-bottom: 2.5rem; line-height: 1.6; }
+
+        /* Typed Tagline */
+        .typed-text { color: var(--accent); position: relative; }
+        .typed-text::after { content: '|'; animation: blink 0.7s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: #1e293b;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item h3 { font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .stat-item p { color: #94a3b8; font-weight: 500; }
+
+        /* Bento Grid Core Offerings */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(30, 41, 59, 0.9); }
+        .bento-card-large { grid-column: span 2; grid-row: span 2; }
+        .bento-card-medium { grid-column: span 2; }
+        
+        .bento-icon { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+        .bento-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .bento-card p { color: #94a3b8; font-size: 0.95rem; }
+
+        /* Reveal Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Pricing Badge Animation */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+        .package-badge { animation: pulse-gold 2s infinite; }
+
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 1rem 0 3rem;
+            scrollbar-width: none;
+        }
+        .testimonial-carousel::-webkit-scrollbar { display: none; }
+        .testimonial-slide {
+            flex: 0 0 400px;
+            scroll-snap-align: center;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .hero { text-align: center; height: auto; padding: 140px 0 80px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card-large, .bento-card-medium { grid-column: span 1; grid-row: span 1; }
+            .testimonial-slide { flex: 0 0 300px; }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
         }
     </style>
     <!-- SEO & Social Media -->
@@ -223,508 +374,332 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
         <div class="container">
-            <div class="hero-media" aria-hidden="true">
-                <img class="hero-media-frame" src="images/hero-haritech.webp" alt="Hari Tech Solutions showroom" width="1920" height="600" loading="eager" fetchpriority="high">
+            <div class="hero-content reveal">
+                <div class="hero-badges" style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <span class="hero-badge" style="background: rgba(251, 191, 36, 0.2); color: var(--accent); padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(251, 191, 36, 0.3);">Since 1993</span>
+                    <span class="hero-badge" style="background: rgba(255, 255, 255, 0.05); color: #fff; padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1);">30+ Years Trust</span>
+                </div>
+                <h1 class="hero-title">Premier IT Solutions & <br><span class="typed-text" id="typed-tagline">Computer Sales</span></h1>
+                <p class="hero-subtitle">Bhuj's most trusted destination for laptop sales, certified refurbished MacBooks, professional CCTV installation, and high-impact website development. Experience legacy combined with innovation.</p>
+                <div class="hero-buttons" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="https://wa.me/919825034580" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 0.75rem;">WhatsApp Consultation</a>
+                    <a href="products.html" class="btn btn-secondary" style="padding: 1rem 2rem; border-radius: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">View Inventory</a>
+                </div>
             </div>
-            <div class="hero-badges">
-                <span class="hero-badge">Since 1993</span>
-                <span class="hero-badge">Formerly Pioneer Computer Services</span>
-                <span class="hero-badge">Thousands of Satisfied Customers</span>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('stats').scrollIntoView()">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <h3 class="counter" data-target="30">0</h3>
+                    <p>Years of Legacy</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="counter" data-target="1000">0</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="counter" data-target="4.8">0</h3>
+                    <p>Google Rating</p>
+                </div>
+                <div class="stat-item reveal">
+                    <h3 class="counter" data-target="24">0</h3>
+                    <p>Hour Support</p>
+                </div>
             </div>
-            <div class="hero-card">
-                <h1 class="hero-title">Best Laptop & Computer Sales, CCTV Installation & IT Services in Bhuj</h1>
-                <p class="hero-subtitle">Hari Tech Solutions is Bhuj's trusted destination for laptop and computer sales, refurbished systems, CCTV installation, and comprehensive IT services. Get the best deals on refurbished Apple MacBooks, expert guidance, and reliable after-sales support for homes, offices, and businesses. Serving customers since 1993 with professional computer repair services.</p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">View Products</a>
-                    <a href="#contact" class="btn btn-secondary">Get Free Consultation</a>
+            
+            <div class="brand-strip-mini" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                <p style="text-align: center; color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2rem;">Authorized in Reputed Brands</p>
+                <div class="brand-logos" style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; filter: grayscale(1) opacity(0.6); transition: 0.3s;">
+                    <span style="font-weight: 700; color: #fff;">Apple</span>
+                    <span style="font-weight: 700; color: #fff;">HP</span>
+                    <span style="font-weight: 700; color: #fff;">Dell</span>
+                    <span style="font-weight: 700; color: #fff;">Lenovo</span>
+                    <span style="font-weight: 700; color: #fff;">Canon</span>
+                    <span style="font-weight: 700; color: #fff;">Hikvision</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Brand Strip -->
-    <section class="brand-strip">
+    <!-- Core Offerings (Bento Grid) -->
+    <section class="offerings" style="padding: 6rem 0; background: #0f172a;">
         <div class="container">
-            <p class="brand-strip-title">Dealing in all reputed brands</p>
-            <div class="brand-logos">
-                <span class="brand-apple">Apple</span>
-                <span class="brand-hp">HP</span>
-                <span class="brand-dell">Dell</span>
-                <span class="brand-lenovo">Lenovo</span>
-                <span class="brand-canon">Canon</span>
-                <span class="brand-epson">Epson</span>
-                <span class="brand-brother">Brother</span>
-                <span class="brand-hikvision">Hikvision</span>
-                <span class="brand-cpplus">CP Plus</span>
+            <div class="section-header reveal" style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+                <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Core Solutions</h2>
+                <p style="color: #94a3b8;">Everything you need for home, office, and business growth—curated for your needs and budget.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Core Offerings -->
-    <section class="offerings">
-        <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">Core Offerings</h2>
-                <p class="section-subtitle">Everything you need for home, office, and business growth—curated for your needs, budget, and long-term peace of mind. From <a href="products.html">laptop sales in Bhuj</a> to <a href="cctv-installation.html">CCTV installation services</a>, we provide comprehensive IT solutions.</p>
-                <div class="offerings-grid">
-                    <div class="offering-card">
-                        <div class="offering-icon">🖥️</div>
-                        <h3>Computers & Laptops</h3>
-                        <p>New and refurbished systems for every budget and use case.</p>
-                    </div>
-                    <div class="offering-card">
-                        <div class="offering-icon">🍎</div>
-                        <h3>Refurb Apple MacBooks</h3>
-                        <p>Carefully tested MacBooks with strong performance and value.</p>
-                    </div>
-                    <div class="offering-card">
-                        <div class="offering-icon">🖨️</div>
-                        <h3>Printers & Accessories</h3>
-                        <p>Inkjet, laser, and all-in-one printers for home and office.</p>
-                    </div>
-                    <div class="offering-card">
-                        <div class="offering-icon">📹</div>
-                        <h3>CCTV & Security</h3>
-                        <p>Complete surveillance solutions with installation and support.</p>
-                    </div>
-                    <div class="offering-card">
-                        <div class="offering-icon">🌐</div>
-                        <h3>Stunning Websites</h3>
-                        <p>Modern, responsive websites designed to boost your business.</p>
-                    </div>
+            
+            <div class="bento-grid">
+                <div class="bento-card bento-card-large reveal">
+                    <span class="bento-icon">💻</span>
+                    <h3>Premium Laptops & PCs</h3>
+                    <p>New and customized high-performance systems for professionals, students, and businesses. Expert assembly and brand-certified components.</p>
+                    <a href="products.html" style="color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1.5rem; font-weight: 600;">Explore Inventory →</a>
                 </div>
-                <div class="offerings-cta">
-                    <a href="#contact" class="btn btn-primary">Get Expert Advice</a>
-                    <a href="products.html" class="btn btn-secondary">Browse All Products</a>
+                
+                <div class="bento-card reveal">
+                    <span class="bento-icon">🍎</span>
+                    <h3>Apple Specialists</h3>
+                    <p>Certified refurbished MacBooks at unbeatable prices. Guaranteed quality and performance.</p>
+                </div>
+                
+                <div class="bento-card reveal">
+                    <span class="bento-icon">🛡️</span>
+                    <h3>CCTV Security</h3>
+                    <p>Complete surveillance solutions with smart remote monitoring features.</p>
+                </div>
+                
+                <div class="bento-card bento-card-medium reveal">
+                    <span class="bento-icon">🌐</span>
+                    <h3>Stunning Website Development</h3>
+                    <p>Mobile-first, high-performance websites built to convert visitors into customers. Modern designs that make your business stand out.</p>
+                    <a href="website-solutions.html" style="color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; font-weight: 600;">Learn More →</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="product-categories" tabindex="-1">
+    <section id="products" class="product-categories" style="padding: 6rem 0; background: #0f172a;">
         <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">Our Products</h2>
-                <div class="categories-intro">
-                    <p>Computers, laptops, printers, and CCTV from all reputed brands—plus a trusted selection of refurbished Apple MacBooks.</p>
+            <div class="section-card reveal" style="background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.1); padding: 3rem; border-radius: 2rem;">
+                <div class="section-header" style="margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+                    <div style="max-width: 600px;">
+                        <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Featured Inventory</h2>
+                        <p style="color: #94a3b8;">Discover our curated selection of high-performance laptops and original Apple products, each passing a 50-point quality check.</p>
+                    </div>
+                    <a href="products.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 0.8rem 1.5rem; border-radius: 0.5rem; color: #fff; text-decoration: none;">Browse Full Collection</a>
                 </div>
                 
-                <div class="products-grid">
-                <!-- MacBook Air M1 2020 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/mac1.webp" alt="MacBook Air M1 2020" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">Best Condition</div>
+                <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <!-- MacBook Air M1 2020 -->
+                    <div class="product-card reveal" style="background: #1e293b; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative;">
+                        <div class="product-image" style="height: 200px; overflow: hidden; position: relative;">
+                            <img src="images/products/mac1.webp" alt="MacBook Air M1 2020" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: #000; padding: 0.2rem 0.8rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 700;">Best Condition</span>
+                        </div>
+                        <div class="product-info" style="padding: 1.5rem;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">MacBook Air M1 2020</h3>
+                            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Apple M1 • 8GB • 256GB SSD • 13.3" Retina</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 1.25rem; font-weight: 700; color: var(--accent);">₹Call</div>
+                                <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" style="background: rgba(251, 191, 36, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>MacBook Air M1 2020</h3>
-                        <ul class="product-specs">
-                            <li>Apple M1 Chip</li>
-                            <li>8GB RAM / 256GB SSD</li>
-                            <li>13.3" Retina Display</li>
-                            <li>Best Condition / 90%+ Battery</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Air M1" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
 
-                <!-- MacBook Pro 16" i7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/mac4.webp" alt="MacBook Pro 16 inch i7" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">Best Condition</div>
+                    <!-- MacBook Pro 16" i7 -->
+                    <div class="product-card reveal" style="background: #1e293b; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative;">
+                        <div class="product-image" style="height: 200px; overflow: hidden; position: relative;">
+                            <img src="images/products/mac4.webp" alt="MacBook Pro 16 inch i7" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <span style="position: absolute; top: 1rem; right: 1rem; background: var(--accent); color: #000; padding: 0.2rem 0.8rem; border-radius: 2rem; font-size: 0.75rem; font-weight: 700;">32GB RAM</span>
+                        </div>
+                        <div class="product-info" style="padding: 1.5rem;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">MacBook Pro 16" i7</h3>
+                            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Intel i7 • 32GB • 512GB SSD • 16" Retina</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 1.25rem; font-weight: 700; color: var(--accent);">₹42,500</div>
+                                <a href="https://wa.me/919825034580?text=I'm interested in MacBook Pro 16 i7" target="_blank" style="background: rgba(251, 191, 36, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>MacBook Pro 16" i7</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i7</li>
-                            <li>32GB RAM / 512GB SSD</li>
-                            <li>16" Retina Display</li>
-                            <li>Best Condition / 90%+ Battery</li>
-                        </ul>
-                        <div class="product-price">₹42500</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Pro 16 i7" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
 
-                <!-- Intel NUC -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/intel-nuc.webp" alt="Intel NUC mini computer" loading="lazy" width="800" height="450">
+                    <!-- Intel NUC -->
+                    <div class="product-card reveal" style="background: #1e293b; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative;">
+                        <div class="product-image" style="height: 200px; overflow: hidden; position: relative;">
+                            <img src="images/products/intel-nuc.webp" alt="Intel NUC" style="width: 100%; height: 100%; object-fit: cover; transition: 0.5s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        </div>
+                        <div class="product-info" style="padding: 1.5rem;">
+                            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Intel NUC Mini PC</h3>
+                            <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">Intel i5 • 8GB • 256GB • Tiny Footprint</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div style="font-size: 1.25rem; font-weight: 700; color: var(--accent);">₹14,499</div>
+                                <a href="https://wa.me/919825034580?text=I'm interested in Intel NUC" target="_blank" style="background: rgba(251, 191, 36, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.85rem; font-weight: 600; text-decoration: none;">WhatsApp</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <h3>Intel NUC</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i5 6th Gen</li>
-                            <li>8GB RAM / 256GB NVME SSD</li>
-                            <li>3 months warranty</li>
-                        </ul>
-                        <div class="product-price">₹14499</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in Intel NUC" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-
-                <!-- HP Pavilion 15 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/hp1.webp" alt="HP Pavilion 15" loading="lazy">
-                        <div class="warranty-badge">1 Year Warranty</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>HP Pavilion 15</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i5 12th Gen</li>
-                            <li>8GB RAM / 512GB SSD</li>
-                            <li>15.6" FHD Display</li>
-                            <li>Windows 11 / Full Service</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in HP Pavilion 15" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-
-                <!-- Lenovo IdeaPad Slim 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/lenovo1.webp" alt="Lenovo IdeaPad Slim 3 laptop" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">1 Year Warranty</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Lenovo IdeaPad Slim 3</h3>
-                        <ul class="product-specs">
-                            <li>AMD Ryzen 5 5500U</li>
-                            <li>8GB RAM / 512GB SSD</li>
-                            <li>15.6" FHD Display</li>
-                            <li>Windows 11 / Full Service</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in Lenovo IdeaPad Slim 3" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-
-                <!-- MacBook Pro 13" M1 2020 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/mac5.webp" alt="MacBook Pro 13 inch M1 2020" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">Best Condition</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>MacBook Pro 13" M1 2020</h3>
-                        <ul class="product-specs">
-                            <li>Apple M1 Chip (8-core CPU)</li>
-                            <li>8GB Unified RAM</li>
-                            <li>512GB SSD Storage</li>
-                            <li>13.3" Retina Display</li>
-                            <li>Battery Health: 90%</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Pro M1 2020" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-
-                <!-- MacBook Pro 15" 2017 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/mac6.webp" alt="MacBook Pro 15 inch 2017" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">Best Condition</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>MacBook Pro 15" 2017</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i7 (Quad-core)</li>
-                            <li>16GB RAM</li>
-                            <li>512GB SSD</li>
-                            <li>15.4" Retina Display</li>
-                            <li>Battery Health: 78%</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in MacBook Pro 15 2017" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-
-                <!-- HP Envy 13 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="images/products/hp2.webp" alt="HP Envy 13 laptop" loading="lazy" width="800" height="450">
-                        <div class="warranty-badge">1 Year Warranty</div>
-                    </div>
-                    <div class="product-info">
-                        <h3>HP Envy 13</h3>
-                        <ul class="product-specs">
-                            <li>Intel Core i7 (12th Gen)</li>
-                            <li>16GB RAM</li>
-                            <li>512GB SSD</li>
-                            <li>13.3" FHD Display</li>
-                            <li>1-Year Warranty</li>
-                        </ul>
-                        <div class="product-price">₹Call</div>
-                        <a href="https://wa.me/919825034580?text=I'm interested in HP Envy 13" target="_blank" class="btn btn-primary btn-small">WhatsApp to Buy</a>
-                    </div>
-                </div>
-                <!-- DYNAMIC_PRODUCTS_END -->
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="products.html" class="btn btn-secondary">View All Products</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- IT Services Section -->
-    <section id="it-services" class="services-section">
+    <!-- Services Section (2-Col Layout) -->
+    <section id="it-services" class="services-section" style="padding: 8rem 0; background: #0f172a;">
         <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">IT Services</h2>
-                <div class="intro-content" style="margin-bottom: 3rem;">
-                    <p>Professional IT support and services for businesses and individuals. From <a href="computer-repair-bhuj.html">computer repair in Bhuj</a> to <a href="network-services-bhuj.html">network setup</a>, we've got you covered with reliable, affordable solutions.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center;">
+                <div class="reveal">
+                    <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.9rem;">Expert IT Services</span>
+                    <h2 class="section-title" style="font-size: 3rem; margin: 1rem 0 2rem;">Professional Support for Your Business</h2>
+                    <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 2.5rem; line-height: 1.7;">From critical data recovery to enterprise-grade server installations, we provide the technical backbone your business needs to stay secure and efficient.</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem;">
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <span style="background: rgba(251, 191, 36, 0.1); color: var(--accent); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; font-size: 0.7rem;">✓</span>
+                            <p style="color: #cbd5e1;">Hardware diagnostics & multi-brand laptop repair</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <span style="background: rgba(251, 191, 36, 0.1); color: var(--accent); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; font-size: 0.7rem;">✓</span>
+                            <p style="color: #cbd5e1;">Advanced network security & server maintenance</p>
+                        </div>
+                        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                            <span style="background: rgba(251, 191, 36, 0.1); color: var(--accent); width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--accent); flex-shrink: 0; font-size: 0.7rem;">✓</span>
+                            <p style="color: #cbd5e1;">Same-day service for critical business failures</p>
+                        </div>
+                    </div>
+                    <a href="services.html" class="btn btn-primary" style="padding: 1rem 2rem; border-radius: 0.5rem; display: inline-block; text-decoration: none;">View All Services</a>
                 </div>
                 
-                <div class="services-grid">
-                <!-- DYNAMIC_IT_SERVICES_START -->
-
-                <!-- Data Recovery Services -->
-                <div class="service-card">
-                    
-                    <div class="service-icon"></div>
-                    <h3><a href="services.html#data-recovery">Data Recovery Services</a></h3>
-                    <p>Recover lost data from any device including hard drives, SSDs, and memory cards.</p>
-                    <ul class="service-features">
-                        <li>Hard drive data recovery</li>
-                        <li>SSD & flash drive recovery</li>
-                        <li>Deleted file recovery</li>
-                        <li>Corrupted file repair</li>
-                    </ul>
-                    <div class="service-price">Starting at ₹1999</div>
-                </div>
-
-                <!-- Computer & Laptop Repair -->
-                <div class="service-card featured">
-                    <div class="service-badge">Most Popular</div>
-                    <div class="service-icon"></div>
-                    <h3><a href="computer-repair-bhuj.html">Computer & Laptop Repair</a></h3>
-                    <p>Expert repair for all brands including screen replacement, hardware fixes, and virus removal.</p>
-                    <ul class="service-features">
-                        <li>Hardware diagnostics & repair</li>
-                        <li>Software troubleshooting</li>
-                        <li>Screen & keyboard replacement</li>
-                        <li>Virus removal & cleanup</li>
-                    </ul>
-                    <div class="service-price">Starting at ₹499</div>
-                </div>
-
-                <!-- CCTV Installation Services -->
-                <div class="service-card">
-                    
-                    <div class="service-icon"></div>
-                    <h3><a href="cctv-installation-bhuj.html">CCTV Installation Services</a></h3>
-                    <p>Complete surveillance solutions for homes, shops, and offices with professional installation.</p>
-                    <ul class="service-features">
-                        <li>Site survey & planning</li>
-                        <li>Camera installation & setup</li>
-                        <li>DVR/NVR configuration</li>
-                        <li>Remote viewing setup</li>
-                    </ul>
-                    <div class="service-price">Starting at ₹2999</div>
-                </div>
-
-                <!-- Server Installation -->
-                <div class="service-card">
-                    
-                    <div class="service-icon"></div>
-                    <h3><a href="network-services-bhuj.html">Server Installation</a></h3>
-                    <p>Professional server setup and network configuration for small businesses and enterprises.</p>
-                    <ul class="service-features">
-                        <li>Windows Server installation</li>
-                        <li>Linux server setup (Ubuntu/CentOS)</li>
-                        <li>Active Directory configuration</li>
-                        <li>Network & security setup</li>
-                    </ul>
-                    <div class="service-price">Starting at ₹4999</div>
-                </div>
-                <!-- DYNAMIC_IT_SERVICES_END -->
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="https://wa.me/919825034580?text=I need IT services" target="_blank" class="btn btn-primary">Request Service</a>
-                    <a href="services.html" class="btn btn-secondary">More Info</a>
+                <div class="services-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div class="service-card reveal" style="background: var(--card-bg); padding: 2rem; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">Data Recovery</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Hard drive, SSD & lost partition recovery experts.</p>
+                    </div>
+                    <div class="service-card reveal" style="background: var(--card-bg); padding: 2rem; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.05); border-top: 4px solid var(--accent);">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">Laptop Repair</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">BGA level repairs, screen replacement & more.</p>
+                    </div>
+                    <div class="service-card reveal" style="background: var(--card-bg); padding: 2rem; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">CCTV Setup</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Modern surveillance with mobile remote view.</p>
+                    </div>
+                    <div class="service-card reveal" style="background: var(--card-bg); padding: 2rem; border-radius: 1.5rem; border: 1px solid rgba(255,255,255,0.05);">
+                        <h4 style="color: var(--accent); margin-bottom: 1rem;">Servers</h4>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">Windows/Linux server installation & AMCs.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Website Solutions Section -->
-    <section id="website-solutions" class="website-intro" tabindex="-1">
+    <section id="website-solutions" class="website-intro" style="padding: 8rem 0; background: #0f172a;">
         <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">Website Development Services</h2>
-                <div class="intro-content">
-                    <p>We don’t just sell hardware—we also build stunning, high-performance websites that help businesses look premium and convert more customers.</p>
-                </div>
+            <div class="section-header reveal" style="text-align: center; max-width: 800px; margin: 0 auto 4rem;">
+                <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Digital Transformation Packages</h2>
+                <p style="color: #94a3b8;">High-performance, SEO-optimized websites designed to grow your business presence in Bhuj and beyond.</p>
+            </div>
 
-                <!-- Packages -->
-                <div class="packages-grid" style="margin-top: 3rem;">
-                <!-- DYNAMIC_WEB_PACKAGES_START -->
-
+            <div class="packages-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <!-- Basic Website -->
-                <div class="package-card">
-                    
-                    <h3>Basic Website</h3>
-                    <div class="package-price">₹5999</div>
-                    <p class="package-subtitle">Perfect for startups & freelancers</p>
-                    <ul class="package-features">
-                        <li>✓ Up to 5 pages</li>
-                        <li>✓ Mobile responsive design</li>
-                        <li>✓ Contact form</li>
-                        <li>✓ Google Maps integration</li>
-                        <li>✓ Social media links</li>
-                        <li>✓ Basic SEO setup</li>
-                        <li>✓ 1 month free support</li>
+                <div class="package-card reveal" style="background: var(--card-bg); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.05); position: relative; transition: 0.3s; border-top: 4px solid #334155;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Starter</h3>
+                    <div class="package-price" style="font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem;">₹5,999</div>
+                    <p style="color: #94a3b8; margin-bottom: 2rem;">Perfect for small shops & professionals</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; color: #cbd5e1;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Up to 5 Pages</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Mobile Responsive</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Basic SEO Setup</li>
                     </ul>
-                    <a href="https://wa.me/919825034580?text=I'm interested in the Basic Website Package (₹5999)" target="_blank" class="btn btn-secondary">Get Started</a>
+                    <a href="https://wa.me/919825034580?text=I'm interested in the Basic Website Package (₹5999)" target="_blank" rel="noopener" style="display: block; text-align: center; background: rgba(255,255,255,0.05); color: #fff; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Get Started</a>
                 </div>
 
                 <!-- Business Website -->
-                <div class="package-card featured">
-                    <div class="package-badge">Recommended</div>
-                    <h3>Business Website</h3>
-                    <div class="package-price">₹9999</div>
-                    <p class="package-subtitle">Complete business solution</p>
-                    <ul class="package-features">
-                        <li>✓ Up to 10 pages</li>
-                        <li>✓ Custom design</li>
-                        <li>✓ Advanced contact forms</li>
-                        <li>✓ Blog/News section</li>
-                        <li>✓ Image gallery</li>
-                        <li>✓ Advanced SEO</li>
-                        <li>✓ Google Analytics</li>
-                        <li>✓ 3 months free support</li>
+                <div class="package-card reveal" style="background: rgba(30, 41, 59, 0.8); padding: 3rem; border-radius: 2rem; border: 1px solid var(--accent); position: relative; transform: scale(1.05); z-index: 10; border-top: 4px solid var(--accent);">
+                    <div class="package-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 0.3rem 1.5rem; border-radius: 2rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">Most Popular</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Business</h3>
+                    <div class="package-price" style="font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 1.5rem;">₹9,999</div>
+                    <p style="color: #94a3b8; margin-bottom: 2rem;">Complete solution for growing businesses</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; color: #cbd5e1;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Up to 10 Pages</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Custom UI/UX Design</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Advanced SEO & Analytics</li>
                     </ul>
-                    <a href="https://wa.me/919825034580?text=I'm interested in the Business Website Package (₹9999)" target="_blank" class="btn btn-primary">Get Started</a>
+                    <a href="https://wa.me/919825034580?text=I'm interested in the Business Website Package (₹9999)" target="_blank" rel="noopener" style="display: block; text-align: center; background: var(--accent); color: #000; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700;">Boost My Business</a>
                 </div>
 
                 <!-- E-Commerce Website -->
-                <div class="package-card">
-                    
-                    <h3>E-Commerce Website</h3>
-                    <div class="package-price">₹15999</div>
-                    <p class="package-subtitle">Full online store setup</p>
-                    <ul class="package-features">
-                        <li>✓ Unlimited products</li>
-                        <li>✓ Payment gateway integration</li>
-                        <li>✓ Inventory management</li>
-                        <li>✓ Order tracking</li>
-                        <li>✓ Customer accounts</li>
-                        <li>✓ Email notifications</li>
-                        <li>✓ Advanced SEO</li>
-                        <li>✓ 6 months free support</li>
+                <div class="package-card reveal" style="background: var(--card-bg); padding: 3rem; border-radius: 2rem; border: 1px solid rgba(255,255,255,0.05); position: relative; transition: 0.3s; border-top: 4px solid #334155;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">E-Commerce</h3>
+                    <div class="package-price" style="font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 1.5rem;">₹15,999</div>
+                    <p style="color: #94a3b8; margin-bottom: 2rem;">Sell products online with ease</p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem; color: #cbd5e1;">
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Unlimited Products</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Payment Gateway Integration</li>
+                        <li style="margin-bottom: 0.8rem; display: flex; gap: 0.5rem;"><span style="color: var(--accent);">✓</span> Order Management</li>
                     </ul>
-                    <a href="https://wa.me/919825034580?text=I'm interested in the E-Commerce Website Package (₹15999)" target="_blank" class="btn btn-secondary">Get Started</a>
-                </div>
-                <!-- DYNAMIC_WEB_PACKAGES_END -->
-                </div>
-
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="website-solutions.html" class="btn btn-secondary">View All Services</a>
+                    <a href="https://wa.me/919825034580?text=I'm interested in the E-Commerce Website Package (₹15999)" target="_blank" rel="noopener" style="display: block; text-align: center; background: rgba(255,255,255,0.05); color: #fff; padding: 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600;">Build My Store</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Choose Us -->
-    <section class="why-choose-us">
+    <section class="why-choose-us" style="padding: 8rem 0; background: #0f172a;">
         <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">Why Choose Hari Tech Solutions?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
-                        <h3>Legacy Since 1993</h3>
-                        <p>Customer-first guidance backed by decades of trust</p>
+            <div style="background: linear-gradient(145deg, #1e293b, #0f172a); padding: 5rem 3rem; border-radius: 3rem; border: 1px solid rgba(255,255,255,0.05);">
+                <h2 class="section-title reveal" style="text-align: center; font-size: 2.5rem; margin-bottom: 4rem;">The HariTech Advantage</h2>
+                <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem;">
+                    <div class="feature-card reveal" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: rgba(251, 191, 36, 0.1); border-radius: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; border: 1px solid rgba(251, 191, 36, 0.2); font-size: 2.5rem;">🏆</div>
+                        <h3 style="margin-bottom: 1rem;">30+ Year Legacy</h3>
+                        <p style="color: #94a3b8; font-size: 0.95rem;">Unmatched expertise and trust built over three decades in Bhuj.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🍎</div>
-                        <h3>Refurb Apple MacBooks</h3>
-                        <p>Verified, dependable devices for long-term confidence</p>
+                    <div class="feature-card reveal" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: rgba(59, 130, 246, 0.1); border-radius: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; border: 1px solid rgba(59, 130, 246, 0.2); font-size: 2.5rem;">🍎</div>
+                        <h3 style="margin-bottom: 1rem;">Apple Experts</h3>
+                        <p style="color: #94a3b8; font-size: 0.95rem;">Certified refurbished MacBooks with local warranty & support.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🖥️</div>
-                        <h3>All Reputed Brands</h3>
-                        <p>Choose from trusted brands with expert recommendations</p>
+                    <div class="feature-card reveal" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: rgba(16, 185, 129, 0.1); border-radius: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; border: 1px solid rgba(16, 185, 129, 0.2); font-size: 2.5rem;">🛠️</div>
+                        <h3 style="margin-bottom: 1rem;">Technical Hub</h3>
+                        <p style="color: #94a3b8; font-size: 0.95rem;">One-stop shop for repair, networking, CCTV, and web development.</p>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🌐</div>
-                        <h3>Stunning Websites</h3>
-                        <p>Modern websites that help you win more customers</p>
+                    <div class="feature-card reveal" style="text-align: center;">
+                        <div style="width: 80px; height: 80px; background: rgba(236, 72, 153, 0.1); border-radius: 2rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; border: 1px solid rgba(236, 72, 153, 0.2); font-size: 2.5rem;">🤝</div>
+                        <h3 style="margin-bottom: 1rem;">Reliable Support</h3>
+                        <p style="color: #94a3b8; font-size: 0.95rem;">Honest guidance and lifetime relationship with every customer.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trusted Legacy -->
-    <section class="trusted-since">
+    <!-- Testimonials Section -->
+    <section class="testimonials" style="padding: 8rem 0; background: #0f172a; overflow: hidden;">
         <div class="container">
-            <div class="trusted-card">
-                <div class="trusted-grid">
-                <div class="trusted-content">
-                    <h2 class="section-title text-left">Trusted Since 1993</h2>
-                    <p class="trusted-subtitle">You get honest guidance, dependable products, and reliable support. Hari Tech Solutions (formerly Pioneer Computer Services) has served customers since 1993, building a huge base of satisfied clients who trust us for quality and value.</p>
-                    <div class="trusted-chips">
-                        <span class="highlight-chip">Reputed Brands</span>
-                        <span class="highlight-chip">Refurb Apple MacBooks</span>
-                        <span class="highlight-chip">Computers & Laptops</span>
-                        <span class="highlight-chip">Printers & CCTV</span>
-                        <span class="highlight-chip">Website Development</span>
-                    </div>
-                </div>
-                <div class="trusted-stats">
-                    <div class="stat-card">
-                        <h3>30+ Years</h3>
-                        <p>Experience in tech sales & service</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>All Brands</h3>
-                        <p>Computers, laptops, printers & CCTV</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Apple Focus</h3>
-                        <p>Certified refurbished MacBooks</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Web Ready</h3>
-                        <p>Stunning websites for businesses</p>
-                    </div>
-                </div>
-                </div>
+            <div class="section-header reveal" style="text-align: center; max-width: 700px; margin: 0 auto 4rem;">
+                <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 1rem;">Customer Experience</h2>
+                <p style="color: #94a3b8;">Real feedback from the people who trust us with their technology every day.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-card">
-                <h2 class="section-title">Customer Love</h2>
-                <p class="section-subtitle">A huge base of satisfied customers is our biggest achievement.</p>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p>"Excellent service and honest advice. Bought a refurbished MacBook and it works like new. Highly recommend for anyone in Bhuj looking for quality tech products."</p>
-                        <h4>Rajesh Patel</h4>
-                        <span class="testimonial-role">Local Business Owner, Bhuj</span>
+            
+            <div class="testimonial-carousel reveal">
+                <div class="testimonial-slide">
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 2rem;">"Excellent service and honest advice. Bought a refurbished MacBook and it works like new. Highly recommend for anyone in Bhuj looking for quality tech products."</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #000;">RP</div>
+                        <div>
+                            <h4 style="color: #fff;">Rajesh Patel</h4>
+                            <span style="color: #64748b; font-size: 0.85rem;">Business Owner, Bhuj</span>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p>"Fast CCTV installation and reliable support. Their team is professional and the system works perfectly. Great value for money."</p>
-                        <h4>Meera Shah</h4>
-                        <span class="testimonial-role">Retail Store Owner, Bhuj</span>
+                </div>
+                <div class="testimonial-slide">
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 2rem;">"Fast CCTV installation and reliable support. Their team is professional and the system works perfectly. Great value for money."</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">MS</div>
+                        <div>
+                            <h4 style="color: #fff;">Meera Shah</h4>
+                            <span style="color: #64748b; font-size: 0.85rem;">Retailer, Bhuj</span>
+                        </div>
                     </div>
-                    <div class="testimonial-card">
-                        <p>"Our new website looks stunning and loads fast. The team understood our requirements perfectly and delivered beyond expectations."</p>
-                        <h4>Vikram Singh</h4>
-                        <span class="testimonial-role">Service Company Owner, Bhuj</span>
+                </div>
+                <div class="testimonial-slide">
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #cbd5e1; margin-bottom: 2rem;">"Our new website looks stunning and loads fast. The team understood our requirements perfectly and delivered beyond expectations."</p>
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="width: 50px; height: 50px; background: #10b981; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff;">VS</div>
+                        <div>
+                            <h4 style="color: #fff;">Vikram Singh</h4>
+                            <span style="color: #64748b; font-size: 0.85rem;">Service Company, Bhuj</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -732,20 +707,47 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="cta-section">
+    <section id="contact" class="cta-section" style="padding: 8rem 0; background: #0f172a;">
         <div class="container">
-            <div class="section-card">
-                <h2>Get In Touch</h2>
-                <p>Need a quote, product guidance, or a new website? We’re ready to help.</p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/919825034580?text=Hi, I want to know more about your products and services" target="_blank" class="btn btn-primary">WhatsApp Us</a>
-                    <a href="contact.html" class="btn btn-secondary">Contact Page</a>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="reveal">
+                    <h2 class="section-title" style="font-size: 3rem; margin-bottom: 1.5rem;">Ready to upgrade your technology?</h2>
+                    <p style="color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; line-height: 1.6;">Whether you need a new laptop, a secure CCTV system, or a premium website, our team is ready to help you make the right choice.</p>
+                    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                        <a href="https://wa.me/919825034580" target="_blank" rel="noopener" class="btn btn-primary" style="padding: 1.2rem 2.5rem; border-radius: 1rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.7rem; text-decoration: none;">
+                            <span>WhatsApp Us</span>
+                        </a>
+                        <a href="contact.html" class="btn btn-secondary" style="padding: 1.2rem 2.5rem; border-radius: 1rem; color: #fff; border: 1px solid rgba(255,255,255,0.1); text-decoration: none;">Visit Contact Page</a>
+                    </div>
                 </div>
                 
-                <div style="margin-top: 3rem; color: #cbd5e1;">
-                    <p><strong>Email:</strong> admin@haritech.org</p>
-                    <p><strong>Phone:</strong> +91 98250 34580</p>
-                    <p><strong>Address:</strong> Dhatia Falia 3 Ways, Anam Ring Road, Bhuj, Kutch, Gujarat</p>
+                <div class="reveal">
+                    <div style="background: var(--card-bg); padding: 3rem; border-radius: 2.5rem; border: 1px solid rgba(255,255,255,0.05);">
+                        <h3 style="margin-bottom: 2rem;">Contact Details</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="color: var(--accent); font-size: 1.5rem;">📍</div>
+                                <div>
+                                    <h4 style="font-size: 0.9rem; color: #64748b; text-transform: uppercase;">Location</h4>
+                                    <p style="color: #fff;">Anam Ring Road, Bhuj, Kutch</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="color: var(--accent); font-size: 1.5rem;">📞</div>
+                                <div>
+                                    <h4 style="font-size: 0.9rem; color: #64748b; text-transform: uppercase;">Phone</h4>
+                                    <p style="color: #fff;">+91 98250 34580</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div style="color: var(--accent); font-size: 1.5rem;">✉️</div>
+                                <div>
+                                    <h4 style="font-size: 0.9rem; color: #64748b; text-transform: uppercase;">Email</h4>
+                                    <p style="color: #fff;">admin@haritech.org</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -757,6 +759,106 @@
         <span class="whatsapp-icon">💬</span>
     </a>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typed Tagline Logic
+            const typedTarget = document.getElementById('typed-tagline');
+            const phrases = ["Computer Sales", "Refurbished MacBooks", "CCTV Installation", "IT Support", "Web Development"];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typeSpeed = 100;
+
+            function type() {
+                const currentPhrase = phrases[phraseIndex];
+                if (isDeleting) {
+                    typedTarget.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    typeSpeed = 50;
+                } else {
+                    typedTarget.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    typeSpeed = 100;
+                }
+
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    typeSpeed = 2000; // Pause at end
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            // Intersection Observer for Reveal Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Trigger counter if this is the stats section
+                        if (entry.target.id === 'stats') {
+                            startCounters();
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            const statsSection = document.getElementById('stats');
+            if (statsSection) revealObserver.observe(statsSection);
+
+            // Animated Counters
+            let countersStarted = false;
+            function startCounters() {
+                if (countersStarted) return;
+                countersStarted = true;
+                
+                const counters = document.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const duration = 2000;
+                    const step = target / (duration / 30);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            counter.textContent = target + (target === 30 || target === 1000 ? '+' : target === 4.8 ? '★' : '');
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + (target === 30 || target === 1000 ? '+' : '');
+                        }
+                    }, 30);
+                });
+            }
+
+            // Testimonial Carousel Auto-scroll
+            const carousel = document.querySelector('.testimonial-carousel');
+            if (carousel) {
+                let isPaused = false;
+                carousel.addEventListener('mouseenter', () => isPaused = true);
+                carousel.addEventListener('mouseleave', () => isPaused = false);
+
+                setInterval(() => {
+                    if (!isPaused) {
+                        carousel.scrollBy({ left: 300, behavior: 'smooth' });
+                        if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 10) {
+                            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                        }
+                    }
+                }, 4000);
+            }
+        });
+    </script>
     <script src="script.js"></script>
     <footer class="footer">
     <div class="container">
